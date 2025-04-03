@@ -17,7 +17,7 @@ body {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    height: 80vh;
+    height: 90vh;
     overflow: hidden;
 }
 
@@ -32,10 +32,11 @@ body {
 
 .message {
     max-width: 70%;
-    padding: 10px 15px;
+    padding: 12px 16px;
     border-radius: 15px;
     animation: fadeIn 0.3s ease-in;
-    white-space: pre-wrap; /* Behoudt regelafbrekingen */
+    white-space: pre-wrap;
+    font-size: 14px;
 }
 
 .bot-message {
@@ -53,9 +54,9 @@ body {
     padding: 15px;
     border-top: 1px solid #d1d1d6;
     display: flex;
-    flex-wrap: wrap;
     gap: 10px;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 button {
@@ -67,6 +68,8 @@ button {
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.2s;
+    flex: 1 1 calc(50% - 5px);
+    margin: 5px 0;
 }
 
 button:hover {
@@ -75,16 +78,19 @@ button:hover {
 
 input[type="text"] {
     padding: 10px;
-    width: 60%;
+    width: 100%;
     border: 1px solid #d1d1d6;
     border-radius: 10px;
     font-size: 16px;
     outline: none;
+    flex: 1 1 100%;
+    margin: 5px 0;
 }
 
 .send-button {
     padding: 10px 20px;
     margin-left: 10px;
+    flex: 1 1 auto;
 }
 
 @keyframes fadeIn {
@@ -92,15 +98,62 @@ input[type="text"] {
     to { opacity: 1; transform: translateY(0); }
 }
 
-@media (max-width: 600px) {
+/* Responsive verbeteringen */
+@media (max-width: 768px) {
     .chat-container {
         height: 100vh;
         border-radius: 0;
     }
-    input[type="text"] {
-        width: 50%;
+    
+    .message {
+        font-size: 14px;
+        padding: 10px 12px;
     }
+    
+    .chat-messages {
+        padding: 15px;
+    }
+    
     .input-area {
         padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .chat-container {
+        max-width: 100%;
+    }
+    
+    .message {
+        max-width: 80%;
+        font-size: 14px;
+    }
+    
+    button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+    
+    input[type="text"] {
+        font-size: 14px;
+    }
+    
+    .send-button {
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 375px) {
+    .message {
+        max-width: 90%;
+    }
+    
+    button {
+        flex: 1 1 100%;
+    }
+    
+    .input-area {
+        flex-direction: column;
+        align-items: stretch;
     }
 }
